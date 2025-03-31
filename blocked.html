@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Site Blocked</title>
+  <style>
+    :root {
+      --primary: #3a5a40;
+      --primary-light: #588157;
+      --primary-dark: #344e41;
+      --secondary: #588157;
+      --secondary-light: #a3b18a;
+      --accent: #a3b18a;
+      --off-white: #dad7cd;
+      --gray-50: #f9fafb;
+      --gray-100: #f3f4f6;
+      --gray-800: #1f2937;
+      --gray-900: #111827;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: var(--gray-900);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+      line-height: 1.6;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    body::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM34 90c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm56-76c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zM12 86c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm28-65c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm23-11c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-6 60c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm29 22c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zM32 63c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm57-13c2.76 0 5-2.24 5-5s-2.24-5-5-5-5 2.24-5 5 2.24 5 5 5zm-9-21c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM60 91c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM35 41c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2zM12 60c1.105 0 2-.895 2-2s-.895-2-2-2-2 .895-2 2 .895 2 2 2z' fill='%23ffffff' fill-opacity='0.1' fill-rule='evenodd'/%3E%3C/svg%3E");
+      pointer-events: none;
+      opacity: 0.7;
+    }
+    
+    .container {
+      max-width: 500px;
+      width: 90%;
+      position: relative;
+      z-index: 10;
+      perspective: 1000px;
+    }
+    
+    .message {
+      background: var(--off-white);
+      border-radius: 24px;
+      padding: 48px 32px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+      text-align: center;
+      transform-style: preserve-3d;
+      animation: fadeInAndScale 0.7s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+    }
+    
+    @keyframes fadeInAndScale {
+      0% { opacity: 0; transform: translateY(-30px) scale(0.95); }
+      100% { opacity: 1; transform: translateY(0) scale(1); }
+    }
+    
+    .message::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 6px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+      z-index: 2;
+    }
+    
+    .message::after {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at top right, rgba(88, 129, 87, 0.05), transparent 70%),
+                 radial-gradient(circle at bottom left, rgba(58, 90, 64, 0.05), transparent 70%);
+      z-index: -1;
+    }
+    
+    h1 {
+      color: var(--primary);
+      margin-top: 8px;
+      font-size: 36px;
+      font-weight: 800;
+      letter-spacing: -0.5px;
+      margin-bottom: 16px;
+      position: relative;
+      display: inline-block;
+    }
+    
+    h1::after {
+      content: "";
+      position: absolute;
+      bottom: -6px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 40%;
+      height: 3px;
+      background: linear-gradient(90deg, var(--primary-light), var(--secondary-light));
+      border-radius: 2px;
+    }
+    
+    p {
+      font-size: 18px;
+      margin-bottom: 30px;
+      color: var(--gray-800);
+      font-weight: 400;
+      line-height: 1.8;
+      max-width: 400px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .icon-container {
+      background: linear-gradient(135deg, rgba(88, 129, 87, 0.1), rgba(58, 90, 64, 0.1));
+      width: 110px;
+      height: 110px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 24px;
+      position: relative;
+      box-shadow: 0 0 0 8px rgba(88, 129, 87, 0.05);
+    }
+    
+    .icon-container::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: 50%;
+      padding: 3px;
+      background: linear-gradient(135deg, var(--primary-light), var(--secondary-light));
+      mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+      -webkit-mask-composite: xor;
+      mask-composite: exclude;
+    }
+    
+    .icon {
+      display: block;
+      width: 50px;
+      height: 50px;
+      fill: var(--primary);
+      animation: pulse 3s ease-in-out infinite;
+    }
+    
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.08); }
+      100% { transform: scale(1); }
+    }
+    
+    .blobs {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      pointer-events: none;
+      z-index: -1;
+    }
+    
+    .blob {
+      position: absolute;
+      border-radius: 50%;
+      filter: blur(40px);
+    }
+    
+    .blob:nth-child(1) {
+      width: 600px;
+      height: 600px;
+      top: -300px;
+      right: -300px;
+      background: radial-gradient(circle, rgba(163, 177, 138, 0.5), rgba(58, 90, 64, 0.2));
+      animation: float1 20s ease-in-out infinite alternate;
+    }
+    
+    .blob:nth-child(2) {
+      width: 400px;
+      height: 400px;
+      bottom: -200px;
+      left: -200px;
+      background: radial-gradient(circle, rgba(88, 129, 87, 0.5), rgba(52, 78, 65, 0.2));
+      animation: float2 15s ease-in-out infinite alternate;
+    }
+    
+    @keyframes float1 {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(50px, 50px) rotate(15deg); }
+    }
+    
+    @keyframes float2 {
+      0% { transform: translate(0, 0) rotate(0deg); }
+      100% { transform: translate(-50px, -30px) rotate(-15deg); }
+    }
+    
+    .back-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(88, 129, 87, 0.1);
+      color: var(--primary);
+      border: none;
+      padding: 12px 24px;
+      border-radius: 12px;
+      font-weight: 600;
+      font-size: 16px;
+      cursor: pointer;
+      transition: all 0.2s ease;
+      margin-top: 10px;
+      text-decoration: none;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    }
+    
+    .back-button:hover {
+      background: rgba(88, 129, 87, 0.15);
+      transform: translateY(-2px);
+    }
+    
+    .back-button svg {
+      margin-right: 8px;
+      width: 20px;
+      height: 20px;
+    }
+    
+    .particles {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+      z-index: -2;
+    }
+    
+    .particle {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      background: white;
+      border-radius: 50%;
+      opacity: 0.2;
+    }
+    
+    /* Timer section */
+    .timer-section {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(88, 129, 87, 0.2);
+    }
+    
+    .countdown {
+      font-size: 32px;
+      font-weight: 700;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+    
+    .focus-tip {
+      font-size: 14px;
+      color: var(--gray-600);
+      margin-bottom: 15px;
+      font-style: italic;
+    }
+  </style>
+</head>
+<body>
+  <div class="blobs">
+    <div class="blob"></div>
+    <div class="blob"></div>
+  </div>
+  
+  <div class="particles" id="particles"></div>
+
+  <div class="container">
+    <div class="message">
+      <div class="icon-container">
+        <svg class="icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+          <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8 0-4.42 3.58-8 8-8 4.42 0 8 3.58 8 8 0 4.42-3.58 8-8 8zm-1-13h2v7h-2zm0 8h2v2h-2z"/>
+        </svg>
+      </div>
+      <h1>Site Blocked</h1>
+      <p>This website has been blocked to help you stay focused and productive. Remember your goals and make the most of your time!</p>
+      
+      <div class="timer-section">
+        <div class="countdown" id="focusTimer">Focus Time</div>
+        <div class="focus-tip">Take a deep breath and redirect your attention to something meaningful.</div>
+      </div>
+      
+      <a href="#" id="goBack" class="back-button">
+        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18" />
+        </svg>
+        Go Back
+      </a>
+    </div>
+  </div>
+  
+  <!-- Load external script -->
+  <script src="blocked.js"></script>
+</body>
+</html>
